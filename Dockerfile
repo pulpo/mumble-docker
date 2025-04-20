@@ -36,16 +36,19 @@ WORKDIR /mumble/repo
 RUN apt-get update && apt-get install --no-install-recommends -y \
     git cmake build-essential ca-certificates pkg-config \
     libssl-dev \
-    libboost-dev \
+    libboost-all-dev \
     libprotobuf-dev \
     protobuf-compiler \
+    libpq-dev \
     libprotoc-dev \
     libcap-dev \
+    libsqlite3-dev \
     libxi-dev \
     libavahi-compat-libdnssd-dev \
     libzeroc-ice-dev \
     python3 \
     git \
+    libmysqlclient-dev  \
     && export QT_VERSION="$( /mumble/scripts/choose_qt_version.sh )" \
     && /mumble/scripts/install_qt_dev.sh \
     && apt-get clean \
