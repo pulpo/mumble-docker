@@ -12,12 +12,12 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     '^libprotobuf[0-9]+$' \
     libavahi-compat-libdnssd1 \
     ca-certificates \
-    && export QT_VERSION="$( /mumble/scripts/choose_qt_version.sh )" \
-    && /mumble/scripts/install_qt.sh \
+#    && export QT_VERSION="$( /mumble/scripts/choose_qt_version.sh )" \
+#    && /mumble/scripts/install_qt.sh \
     # Workaround for systems like CentOS 7 which won't load libQt5Core.so as expected:
     # see also https://stackoverflow.com/a/68897099/
     binutils \
-    && find /lib* /usr/lib* -name 'libQt?Core.so.*' -exec strip --remove-section=.note.ABI-tag {} \; \
+#    && find /lib* /usr/lib* -name 'libQt?Core.so.*' -exec strip --remove-section=.note.ABI-tag {} \; \
     && apt-get -y purge binutils \
     # End of workaround
     && apt-get clean \
@@ -49,8 +49,8 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     python3 \
     git \
     libmysqlclient-dev  \
-    && export QT_VERSION="$( /mumble/scripts/choose_qt_version.sh )" \
-    && /mumble/scripts/install_qt_dev.sh \
+#    && export QT_VERSION="$( /mumble/scripts/choose_qt_version.sh )" \
+#    && /mumble/scripts/install_qt_dev.sh \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
